@@ -1,8 +1,8 @@
 namespace SuppShop
 {
-    public partial class Form1 : Form
+    public partial class staffFrm : Form
     {
-        public Form1()
+        public staffFrm()
         {
             InitializeComponent();
         }
