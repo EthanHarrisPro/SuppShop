@@ -11,11 +11,15 @@ namespace SuppShop
     public partial class createStaffFrm : Form
     {
         staffFrm _StaffFrm;
-        public createStaffFrm(staffFrm staffFrm)
+        StaffService _StaffService;
+        public createStaffFrm(staffFrm staffFrm, StaffService staffService)
         {
             InitializeComponent();
             _StaffFrm = staffFrm;
+            this._StaffService = staffService;
         }
+
+
 
         private void createStaffFrm_Load(object sender, EventArgs e)
         {
@@ -24,13 +28,20 @@ namespace SuppShop
 
         private void createBtn_Click(object sender, EventArgs e)
         {
-            Staff staff = new Staff();
-            staff.createUser(staff, nameTxt.Text, emailTxt.Text, passwordTxt.Text);
-            staff.saveUser(staff.name, staff.email, staff.password);
+            Staff staff = new Staff(nameTxt.Text, emailTxt.Text, passwordTxt.Text);
+            _StaffService.AddStaff(staff);
 
-            this.Hide();
+            staff.CreateUser();
+
+            this.Close();
             _StaffFrm.Show();
-            
+
+        }
+
+        private void cancelBtn_Click(object sender, EventArgs e)
+        {
+            _StaffFrm.Show();
+            this.Close();
         }
     }
 }

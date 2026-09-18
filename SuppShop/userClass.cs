@@ -1,40 +1,57 @@
 ﻿using System;
 using System.IO;
+using System.Net;
 
-public class User
+public abstract class User
 {
-    public string name = "";
-    public string email = "";
-    public string password = "";
+    public string Name { get; set; }
+    public string Email { get; set; }
+    public string Password { get; set; }
 
+    public User(string name, string email, string password)
+    {
+        Name = name;
+        Email = email;
+        Password = password;
+    }
+    
+    
     public void createUser()
     {
 
     }
 
+    
+
 }
 
 public class Staff : User
 {
-    public Staff()
-    {
+    public Staff(string name, string email, string password) : base(name, email, password)
+    { 
         
     }
 
-    public void createUser(Staff staff,string Name, string Email, string Password)
+    public void CreateUser()
     {
-        staff.name = Name;
-        staff.email = Email;
-        staff.password = Password;
+
+        File.AppendAllText("staff.txt", Name + "," + Email + "," + Password + "\n");
+
     }
 
-    public void saveUser(string Name, string Email, string Password)
-    {
-        File.AppendAllText("staff.txt", "\n S \n" + Name + "\n" + Email + "\n" + Password + "\n E \n");
-    }
 }
 
 
-public class Customer : User
-{ 
+class Customer : User
+{
+
+    public Customer(string name, string email, string password) : base(name, email, password)
+    {
+
+    }
+
+    public void createUser()
+    {
+        File.AppendAllText("customer.txt", Name + "," + Email + "," + Password + "\n");
+    }
 }

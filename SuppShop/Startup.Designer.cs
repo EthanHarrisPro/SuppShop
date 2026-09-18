@@ -1,6 +1,6 @@
 ﻿namespace SuppShop
 {
-    partial class staffFrm
+    partial class startupFrm
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,51 +29,48 @@
         private void InitializeComponent()
         {
             staffBtn = new Button();
-            productBtn = new Button();
+            customerBtn = new Button();
             SuspendLayout();
             // 
             // staffBtn
             // 
-            staffBtn.Location = new Point(26, 48);
+            staffBtn.Location = new Point(131, 192);
             staffBtn.Name = "staffBtn";
-            staffBtn.Size = new Size(93, 73);
+            staffBtn.Size = new Size(121, 83);
             staffBtn.TabIndex = 0;
-            staffBtn.Text = "Create Staff";
+            staffBtn.Text = "Staff";
             staffBtn.UseVisualStyleBackColor = true;
-            staffBtn.Click += this.staffBtn_Click;
+            staffBtn.Click += staffBtn_Click;
             // 
-            // productBtn
+            // customerBtn
             // 
-            productBtn.Location = new Point(26, 139);
-            productBtn.Name = "productBtn";
-            productBtn.Size = new Size(93, 73);
-            productBtn.TabIndex = 1;
-            productBtn.Text = "Create Product";
-            productBtn.UseVisualStyleBackColor = true;
+            customerBtn.Location = new Point(389, 192);
+            customerBtn.Name = "customerBtn";
+            customerBtn.Size = new Size(121, 83);
+            customerBtn.TabIndex = 1;
+            customerBtn.Text = "Customer";
+            customerBtn.UseVisualStyleBackColor = true;
+            customerBtn.Click += customerBtn_Click;
             // 
-            // staffFrm
+            // startupFrm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(729, 501);
-            Controls.Add(productBtn);
+            Controls.Add(customerBtn);
             Controls.Add(staffBtn);
-            Name = "staffFrm";
-            Text = "Staff";
+            Name = "startupFrm";
+            Text = "Start";
+            Load += staffFrm_Load;
             ResumeLayout(false);
         }
 
-        private void staffBtn_Click(object sender, EventArgs e)
-        {
-            createStaffFrm creatstaff = new createStaffFrm(this);
-            this.Hide();
-            creatstaff.Show();
-            
-        }
+
 
         #endregion
 
+
         private Button staffBtn;
-        private Button productBtn;
+        private Button customerBtn;
     }
 }

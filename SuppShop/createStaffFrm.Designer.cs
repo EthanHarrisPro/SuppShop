@@ -35,6 +35,7 @@
             emailTxt = new TextBox();
             passwordTxt = new TextBox();
             createBtn = new Button();
+            cancelBtn = new Button();
             SuspendLayout();
             // 
             // nameBtn
@@ -95,11 +96,22 @@
             createBtn.UseVisualStyleBackColor = true;
             createBtn.Click += createBtn_Click;
             // 
+            // cancelBtn
+            // 
+            cancelBtn.Location = new Point(12, 22);
+            cancelBtn.Name = "cancelBtn";
+            cancelBtn.Size = new Size(78, 32);
+            cancelBtn.TabIndex = 7;
+            cancelBtn.Text = "Cancel";
+            cancelBtn.UseVisualStyleBackColor = true;
+            cancelBtn.Click += cancelBtn_Click;
+            // 
             // createStaffFrm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(cancelBtn);
             Controls.Add(createBtn);
             Controls.Add(passwordTxt);
             Controls.Add(emailTxt);
@@ -123,5 +135,6 @@
         private TextBox emailTxt;
         private TextBox passwordTxt;
         private Button createBtn;
+        private Button cancelBtn;
     }
 }
