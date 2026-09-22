@@ -28,7 +28,9 @@ namespace SuppShop
 
         private void createBtn_Click(object sender, EventArgs e)
         {
-            Staff staff = new Staff(nameTxt.Text, emailTxt.Text, passwordTxt.Text);
+            int access = accessCmb.SelectedIndex + 1;
+            string Access = access.ToString();
+            Staff staff = new Staff(nameTxt.Text, emailTxt.Text, passwordTxt.Text, Access);
             _StaffService.AddStaff(staff);
 
             staff.CreateUser();
@@ -42,6 +44,11 @@ namespace SuppShop
         {
             _StaffFrm.Show();
             this.Close();
+        }
+
+        private void testBtn_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(accessCmb.SelectedIndex.ToString());
         }
     }
 }

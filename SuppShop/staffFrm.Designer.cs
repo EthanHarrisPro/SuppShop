@@ -31,6 +31,8 @@
             productBtn = new Button();
             staffBtn = new Button();
             backBtn = new Button();
+            editProdBtn = new Button();
+            sellBtn = new Button();
             SuspendLayout();
             // 
             // productBtn
@@ -63,11 +65,33 @@
             backBtn.UseVisualStyleBackColor = true;
             backBtn.Click += backBtn_Click;
             // 
+            // editProdBtn
+            // 
+            editProdBtn.Location = new Point(177, 132);
+            editProdBtn.Name = "editProdBtn";
+            editProdBtn.Size = new Size(93, 73);
+            editProdBtn.TabIndex = 8;
+            editProdBtn.Text = "Edit Products";
+            editProdBtn.UseVisualStyleBackColor = true;
+            editProdBtn.Click += editProdBtn_Click;
+            // 
+            // sellBtn
+            // 
+            sellBtn.Location = new Point(22, 257);
+            sellBtn.Name = "sellBtn";
+            sellBtn.Size = new Size(93, 73);
+            sellBtn.TabIndex = 9;
+            sellBtn.Text = "Sell Product";
+            sellBtn.UseVisualStyleBackColor = true;
+            sellBtn.Click += sellBtn_Click;
+            // 
             // staffFrm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(sellBtn);
+            Controls.Add(editProdBtn);
             Controls.Add(backBtn);
             Controls.Add(productBtn);
             Controls.Add(staffBtn);
@@ -82,5 +106,7 @@
         private Button productBtn;
         private Button staffBtn;
         private Button backBtn;
+        private Button editProdBtn;
+        private Button sellBtn;
     }
 }

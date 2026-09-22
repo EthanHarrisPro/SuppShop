@@ -32,7 +32,7 @@ namespace SuppShop
 
         private void enterBtn_Click(object sender, EventArgs e)
         {
-            _products.createProduct(nameTxt.Text, descTxt.Text, int.Parse(countTxt.Text));
+            _products.createProduct(nameTxt.Text, descTxt.Text, int.Parse(countTxt.Text), decimal.Parse(costTxt.Text));
             _products.AddProduct(_products);
             _products.saveProduct();
         }

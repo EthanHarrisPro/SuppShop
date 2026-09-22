@@ -31,11 +31,19 @@ namespace SuppShop
                     string name = parts[0];
                     string email = parts[1];
                     string password = parts[2];
+                    string access = parts[3];
 
-                    Staff staff = new(name, email, password);
+                    Staff staff = new(name, email, password, access);
 
                     staffService.AddStaff(staff);
                 }
+            }
+            else
+            {
+                Staff staff = new Staff("Admin", "Admin", "Admin", "0");
+                staffService.AddStaff(staff);
+
+                staff.CreateUser();
             }
         }
 

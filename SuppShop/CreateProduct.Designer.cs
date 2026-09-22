@@ -33,11 +33,12 @@
             descTxt = new TextBox();
             countTxt = new TextBox();
             cancelBtn = new Button();
+            costTxt = new TextBox();
             SuspendLayout();
             // 
             // enterBtn
             // 
-            enterBtn.Location = new Point(83, 251);
+            enterBtn.Location = new Point(83, 290);
             enterBtn.Name = "enterBtn";
             enterBtn.Size = new Size(113, 58);
             enterBtn.TabIndex = 0;
@@ -75,15 +76,24 @@
             cancelBtn.Name = "cancelBtn";
             cancelBtn.Size = new Size(69, 35);
             cancelBtn.TabIndex = 4;
-            cancelBtn.Text = "Cancel";
+            cancelBtn.Text = "Back";
             cancelBtn.UseVisualStyleBackColor = true;
             cancelBtn.Click += cancelBtn_Click;
+            // 
+            // costTxt
+            // 
+            costTxt.Location = new Point(83, 218);
+            costTxt.Name = "costTxt";
+            costTxt.Size = new Size(113, 27);
+            costTxt.TabIndex = 5;
+            costTxt.Text = "Cost";
             // 
             // CreateProduct
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(costTxt);
             Controls.Add(cancelBtn);
             Controls.Add(countTxt);
             Controls.Add(descTxt);
@@ -103,5 +113,6 @@
         private TextBox descTxt;
         private TextBox countTxt;
         private Button cancelBtn;
+        private TextBox costTxt;
     }
 }

@@ -36,6 +36,8 @@
             passwordTxt = new TextBox();
             createBtn = new Button();
             cancelBtn = new Button();
+            accessCmb = new ComboBox();
+            testBtn = new Button();
             SuspendLayout();
             // 
             // nameBtn
@@ -88,7 +90,7 @@
             // 
             // createBtn
             // 
-            createBtn.Location = new Point(152, 344);
+            createBtn.Location = new Point(477, 348);
             createBtn.Name = "createBtn";
             createBtn.Size = new Size(78, 62);
             createBtn.TabIndex = 6;
@@ -106,11 +108,33 @@
             cancelBtn.UseVisualStyleBackColor = true;
             cancelBtn.Click += cancelBtn_Click;
             // 
+            // accessCmb
+            // 
+            accessCmb.AllowDrop = true;
+            accessCmb.FormattingEnabled = true;
+            accessCmb.Items.AddRange(new object[] { "Manager- 1", "Staff- 2" });
+            accessCmb.Location = new Point(126, 348);
+            accessCmb.Name = "accessCmb";
+            accessCmb.Size = new Size(151, 28);
+            accessCmb.TabIndex = 8;
+            // 
+            // testBtn
+            // 
+            testBtn.Location = new Point(323, 330);
+            testBtn.Name = "testBtn";
+            testBtn.Size = new Size(78, 62);
+            testBtn.TabIndex = 9;
+            testBtn.Text = "Test";
+            testBtn.UseVisualStyleBackColor = true;
+            testBtn.Click += testBtn_Click;
+            // 
             // createStaffFrm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(testBtn);
+            Controls.Add(accessCmb);
             Controls.Add(cancelBtn);
             Controls.Add(createBtn);
             Controls.Add(passwordTxt);
@@ -136,5 +160,7 @@
         private TextBox passwordTxt;
         private Button createBtn;
         private Button cancelBtn;
+        private ComboBox accessCmb;
+        private Button testBtn;
     }
 }

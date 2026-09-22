@@ -45,7 +45,19 @@ namespace SuppShop
         {
             CreateProduct createProduct = new(this, _products);
             createProduct.Show();
-            this.Close();
+            this.Hide();
+        }
+
+        private void editProdBtn_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void sellBtn_Click(object sender, EventArgs e)
+        {
+            SellFrm sellFrm = new(this, _products);
+            sellFrm.Show();
+            this.Hide();
         }
     }
 }

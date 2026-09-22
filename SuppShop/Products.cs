@@ -11,6 +11,8 @@ namespace SuppShop
         public string Desc { get; set; } = "";
         public int Count { get; set; }
 
+        public decimal Cost { get; set; }
+
         List<Products> productslist = new();
 
 
@@ -27,15 +29,29 @@ namespace SuppShop
 
         public void saveProduct()
         {
-            File.AppendAllText("products.txt", Name + "," + Desc + "," + Count + "\n");
+            File.AppendAllText("products.txt", Name + "," + Desc + "," + Count + "," + Cost + "\n");
 
 
         }
-        public void createProduct(string name, string desc, int count)
+        public void createProduct(string name, string desc, int count, decimal cost)
         {
             Name = name;
             Desc = desc;
             Count = count;
+            Cost = cost;
+        }
+
+        public void UpdateProduct()
+        {
+            if (File.Exists("products.txt"))
+            {
+                File.Delete("products.txt");
+            }
+
+            foreach (Products p in productslist)
+            {
+                p.saveProduct();
+            }
         }
     }
 }

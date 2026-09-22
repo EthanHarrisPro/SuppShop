@@ -7,16 +7,20 @@ public abstract class User
     public string Name { get; set; }
     public string Email { get; set; }
     public string Password { get; set; }
+    public string AccessLevel { get; set; }
 
-    public User(string name, string email, string password)
+    public User(string name, string email, string password, string accesslevel)
     {
         Name = name;
         Email = email;
         Password = password;
+        AccessLevel = accesslevel;
     }
+
     
     
-    public void createUser()
+    
+    public void CreateUser()
     {
 
     }
@@ -27,15 +31,16 @@ public abstract class User
 
 public class Staff : User
 {
-    public Staff(string name, string email, string password) : base(name, email, password)
+    public Staff(string name, string email, string password, string accesslevel) : base(name, email, password, accesslevel)
     { 
         
     }
 
-    public void CreateUser()
+
+    new public void CreateUser()
     {
 
-        File.AppendAllText("staff.txt", Name + "," + Email + "," + Password + "\n");
+        File.AppendAllText("staff.txt", Name + "," + Email + "," + Password + "," + AccessLevel + "\n");
 
     }
 
@@ -45,12 +50,12 @@ public class Staff : User
 class Customer : User
 {
 
-    public Customer(string name, string email, string password) : base(name, email, password)
+    public Customer(string name, string email, string password) : base(name, email, password,"")
     {
 
     }
 
-    public void createUser()
+    new public void CreateUser()
     {
         File.AppendAllText("customer.txt", Name + "," + Email + "," + Password + "\n");
     }

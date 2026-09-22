@@ -20,20 +20,23 @@ namespace SuppShop
                     string name = parts[0];
                     string desc = parts[1];
                     string count = parts[2];
+                    string cost = parts[3];
 
                     Products temp = new();
-                    temp.createProduct(name, desc, int.Parse(count));
+                    temp.createProduct(name, desc, int.Parse(count), decimal.Parse(cost));
 
                     products.AddProduct(temp);
 
                     
                 }
+                /*Testing
                 for (int i = 0; i < 2; i++)
                 {
                     List<Products> product = products.GetProduct();
                     string count = product[i].Count.ToString();
                     MessageBox.Show(product[i].Name + product[i].Desc + product[i].Count);
                 }
+                */
             }
 
 
