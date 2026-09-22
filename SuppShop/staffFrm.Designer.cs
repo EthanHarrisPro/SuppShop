@@ -33,11 +33,12 @@
             backBtn = new Button();
             editProdBtn = new Button();
             sellBtn = new Button();
+            editStaffBtn = new Button();
             SuspendLayout();
             // 
             // productBtn
             // 
-            productBtn.Location = new Point(22, 132);
+            productBtn.Location = new Point(327, 41);
             productBtn.Name = "productBtn";
             productBtn.Size = new Size(93, 73);
             productBtn.TabIndex = 3;
@@ -67,7 +68,7 @@
             // 
             // editProdBtn
             // 
-            editProdBtn.Location = new Point(177, 132);
+            editProdBtn.Location = new Point(426, 41);
             editProdBtn.Name = "editProdBtn";
             editProdBtn.Size = new Size(93, 73);
             editProdBtn.TabIndex = 8;
@@ -77,7 +78,7 @@
             // 
             // sellBtn
             // 
-            sellBtn.Location = new Point(22, 257);
+            sellBtn.Location = new Point(327, 239);
             sellBtn.Name = "sellBtn";
             sellBtn.Size = new Size(93, 73);
             sellBtn.TabIndex = 9;
@@ -85,11 +86,22 @@
             sellBtn.UseVisualStyleBackColor = true;
             sellBtn.Click += sellBtn_Click;
             // 
+            // editStaffBtn
+            // 
+            editStaffBtn.Location = new Point(22, 137);
+            editStaffBtn.Name = "editStaffBtn";
+            editStaffBtn.Size = new Size(93, 73);
+            editStaffBtn.TabIndex = 10;
+            editStaffBtn.Text = "Edit Staff";
+            editStaffBtn.UseVisualStyleBackColor = true;
+            editStaffBtn.Click += editStaffBtn_Click;
+            // 
             // staffFrm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(editStaffBtn);
             Controls.Add(sellBtn);
             Controls.Add(editProdBtn);
             Controls.Add(backBtn);
@@ -108,5 +120,6 @@
         private Button backBtn;
         private Button editProdBtn;
         private Button sellBtn;
+        private Button editStaffBtn;
     }
 }

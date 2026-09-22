@@ -17,6 +17,18 @@ namespace SuppShop
         {
             staffList.Add(staff);
         }
-        
+
+        public void UpdateStaff()
+        {
+            if (File.Exists("staff.txt"))
+            {
+                File.Delete("staff.txt");
+            }
+
+            foreach (Staff s in staffList)
+            {
+                s.CreateUser();
+            }
+        }
     }
 }

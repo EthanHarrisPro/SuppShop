@@ -52,7 +52,7 @@ namespace SuppShop
             List<Staff> staff = staffService.GetStaff();
             foreach (Staff i in staff)
             {
-                if ((i.Name == userTxt.Text) && (i.Password == passwordTxt.Text))
+                if ((i.Email == userTxt.Text) && (i.Password == passwordTxt.Text))
                 {
                     staffFrm sfrm = new staffFrm(this, staffService, _products);
                     this.Hide();

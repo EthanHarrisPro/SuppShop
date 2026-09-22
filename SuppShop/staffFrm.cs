@@ -50,13 +50,22 @@ namespace SuppShop
 
         private void editProdBtn_Click(object sender, EventArgs e)
         {
-            
+            EditProdFrm editProdFrm = new(this, _products);
+            editProdFrm.Show();
+            this.Hide();
         }
 
         private void sellBtn_Click(object sender, EventArgs e)
         {
             SellFrm sellFrm = new(this, _products);
             sellFrm.Show();
+            this.Hide();
+        }
+
+        private void editStaffBtn_Click(object sender, EventArgs e)
+        {
+            EditStaffFrm editStaffFrm = new(this, _StaffService);
+            editStaffFrm.Show();
             this.Hide();
         }
     }
