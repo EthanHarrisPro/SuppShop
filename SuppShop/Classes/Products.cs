@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
-namespace SuppShop
+namespace SuppShop.Classes
 {
     public class Products
     {

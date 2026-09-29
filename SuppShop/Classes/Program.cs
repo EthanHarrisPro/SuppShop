@@ -1,4 +1,4 @@
-namespace SuppShop
+namespace SuppShop.Classes
 {
     internal static class Program
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace SuppShop
+namespace SuppShop.Classes
 {
     public class StaffService
     {

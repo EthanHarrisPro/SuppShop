@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             staffBtn = new Button();
-            customerBtn = new Button();
+            dbBtn = new Button();
             SuspendLayout();
             // 
             // staffBtn
@@ -38,26 +38,26 @@
             staffBtn.Name = "staffBtn";
             staffBtn.Size = new Size(121, 83);
             staffBtn.TabIndex = 0;
-            staffBtn.Text = "Staff";
+            staffBtn.Text = "Staff Txt";
             staffBtn.UseVisualStyleBackColor = true;
             staffBtn.Click += staffBtn_Click;
             // 
-            // customerBtn
+            // dbBtn
             // 
-            customerBtn.Location = new Point(389, 192);
-            customerBtn.Name = "customerBtn";
-            customerBtn.Size = new Size(121, 83);
-            customerBtn.TabIndex = 1;
-            customerBtn.Text = "Customer";
-            customerBtn.UseVisualStyleBackColor = true;
-            customerBtn.Click += customerBtn_Click;
+            dbBtn.Location = new Point(389, 192);
+            dbBtn.Name = "dbBtn";
+            dbBtn.Size = new Size(121, 83);
+            dbBtn.TabIndex = 1;
+            dbBtn.Text = "DB";
+            dbBtn.UseVisualStyleBackColor = true;
+            dbBtn.Click += customerBtn_Click;
             // 
             // startupFrm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(729, 501);
-            Controls.Add(customerBtn);
+            Controls.Add(dbBtn);
             Controls.Add(staffBtn);
             Name = "startupFrm";
             Text = "Start";
@@ -71,6 +71,6 @@
 
 
         private Button staffBtn;
-        private Button customerBtn;
+        private Button dbBtn;
     }
 }

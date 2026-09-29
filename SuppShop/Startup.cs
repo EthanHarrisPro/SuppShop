@@ -1,3 +1,5 @@
+using SuppShop.Classes;
+
 namespace SuppShop
 {
     public partial class startupFrm : Form
