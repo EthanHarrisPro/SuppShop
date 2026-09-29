@@ -19,10 +19,10 @@ namespace SuppShop.Data
 
         public DbSet<StaffM> Staff { get; set; } = null!;
 
-        public DbSet<StaffLogM> StaffLog { get; set; } = null!;
 
-        public DbSet<CustomerLogM> CustomerLog { get; set; } = null!;
-
-
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SuppShop;");
+        }
     }
 }
