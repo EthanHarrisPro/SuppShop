@@ -77,6 +77,13 @@ namespace SuppShop
                     + p.Description + "\n" + "Price: " + p.Price + "\n" + "Stock: " + p.Stock);
 
             }
+
+            var staff = context.Staff;
+
+            foreach(StaffM s in staff)
+            {
+                MessageBox.Show(s.Name);
+            }
         }
 
         private void dbAddBtn_Click(object sender, EventArgs e)

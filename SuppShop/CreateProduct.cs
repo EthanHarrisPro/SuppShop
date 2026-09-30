@@ -1,4 +1,6 @@
 ﻿using SuppShop.Classes;
+using SuppShop.Data;
+using SuppShop.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,6 +38,20 @@ namespace SuppShop
             _products.createProduct(nameTxt.Text, descTxt.Text, int.Parse(countTxt.Text), decimal.Parse(costTxt.Text));
             _products.AddProduct(_products);
             _products.saveProduct();
+
+            using SuppShopContext context = new SuppShopContext();
+
+            ProductM product = new()
+            {
+                Name = nameTxt.Text,
+                Description = descTxt.Text,
+                Price = decimal.Parse(costTxt.Text),
+                Stock = int.Parse(countTxt.Text)
+            };
+
+            context.Add(product);
+
+            context.SaveChanges();
         }
     }
 }

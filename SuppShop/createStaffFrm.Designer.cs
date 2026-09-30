@@ -38,6 +38,8 @@
             cancelBtn = new Button();
             accessCmb = new ComboBox();
             testBtn = new Button();
+            numberTxt = new TextBox();
+            addressTxt = new TextBox();
             SuspendLayout();
             // 
             // nameBtn
@@ -128,11 +130,29 @@
             testBtn.UseVisualStyleBackColor = true;
             testBtn.Click += testBtn_Click;
             // 
+            // numberTxt
+            // 
+            numberTxt.Location = new Point(468, 154);
+            numberTxt.Name = "numberTxt";
+            numberTxt.Size = new Size(179, 27);
+            numberTxt.TabIndex = 11;
+            numberTxt.Text = "Phone Number";
+            // 
+            // addressTxt
+            // 
+            addressTxt.Location = new Point(468, 66);
+            addressTxt.Name = "addressTxt";
+            addressTxt.Size = new Size(179, 27);
+            addressTxt.TabIndex = 10;
+            addressTxt.Text = "Address";
+            // 
             // createStaffFrm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(numberTxt);
+            Controls.Add(addressTxt);
             Controls.Add(testBtn);
             Controls.Add(accessCmb);
             Controls.Add(cancelBtn);
@@ -162,5 +182,7 @@
         private Button cancelBtn;
         private ComboBox accessCmb;
         private Button testBtn;
+        private TextBox numberTxt;
+        private TextBox addressTxt;
     }
 }

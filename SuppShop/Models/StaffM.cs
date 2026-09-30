@@ -20,5 +20,7 @@ namespace SuppShop.Models
 
         public string Password { get; set; } = null!;
 
+        public int Level { get; set; }
+
     }
 }

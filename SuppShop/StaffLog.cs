@@ -1,4 +1,6 @@
 ﻿using SuppShop.Classes;
+using SuppShop.Data;
+using SuppShop.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -50,16 +52,40 @@ namespace SuppShop
 
         private void enterBtn_Click(object sender, EventArgs e)
         {
-            List<Staff> staff = staffService.GetStaff();
-            foreach (Staff i in staff)
+            bool online = onlineChk.Checked;
+            if (online == false)
             {
-                if ((i.Email == userTxt.Text) && (i.Password == passwordTxt.Text))
+                List<Staff> staff = staffService.GetStaff();
+                foreach (Staff i in staff)
                 {
-                    staffFrm sfrm = new staffFrm(this, staffService, _products);
+                    if ((i.Email == userTxt.Text) && (i.Password == passwordTxt.Text))
+                    {
+                        staffFrm sfrm = new staffFrm(this, staffService, _products, online);
+                        this.Hide();
+                        sfrm.Show();
+                        userTxt.Text = "";
+                        passwordTxt.Text = "";
+                    }
+                }
+            }
+            else
+            {
+                using SuppShopContext context = new SuppShopContext();
+
+                var staff = context.Staff.Where(s => s.Email == userTxt.Text && s.Password == passwordTxt.Text)
+                    .FirstOrDefault();
+
+                if (staff is StaffM)
+                {
+                    staffFrm sfrm = new staffFrm(this, staffService, _products, online);
                     this.Hide();
                     sfrm.Show();
                     userTxt.Text = "";
                     passwordTxt.Text = "";
+                }
+                else
+                {
+                    MessageBox.Show("Invalid Details");
                 }
             }
 

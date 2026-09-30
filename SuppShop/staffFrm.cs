@@ -14,13 +14,15 @@ namespace SuppShop
         StaffService _StaffService;
         StaffLog _staffLog;
         Products _products;
+        bool Online;
 
-        public staffFrm(StaffLog staffLog, StaffService staffService, Products products)
+        public staffFrm(StaffLog staffLog, StaffService staffService, Products products, bool online)
         {
             InitializeComponent();
             _staffLog = staffLog;
             this._StaffService = staffService;
             _products = products;
+            Online = online;
         }
 
         private void staffBtn_Click(object sender, EventArgs e)

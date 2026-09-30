@@ -36,6 +36,8 @@
             accessCmb = new ComboBox();
             newEmailTxt = new TextBox();
             searchBtn = new Button();
+            numberTxt = new TextBox();
+            addressTxt = new TextBox();
             SuspendLayout();
             // 
             // backBtn
@@ -46,10 +48,11 @@
             backBtn.TabIndex = 7;
             backBtn.Text = "Back";
             backBtn.UseVisualStyleBackColor = true;
+            backBtn.Click += backBtn_Click_1;
             // 
             // editBtn
             // 
-            editBtn.Location = new Point(505, 321);
+            editBtn.Location = new Point(602, 347);
             editBtn.Name = "editBtn";
             editBtn.Size = new Size(98, 64);
             editBtn.TabIndex = 6;
@@ -59,7 +62,7 @@
             // 
             // passwordTxt
             // 
-            passwordTxt.Location = new Point(124, 200);
+            passwordTxt.Location = new Point(284, 144);
             passwordTxt.Name = "passwordTxt";
             passwordTxt.Size = new Size(190, 27);
             passwordTxt.TabIndex = 5;
@@ -67,7 +70,7 @@
             // 
             // emailTxt
             // 
-            emailTxt.Location = new Point(124, 148);
+            emailTxt.Location = new Point(284, 94);
             emailTxt.Name = "emailTxt";
             emailTxt.Size = new Size(190, 27);
             emailTxt.TabIndex = 4;
@@ -75,7 +78,7 @@
             // 
             // nameTxt
             // 
-            nameTxt.Location = new Point(124, 96);
+            nameTxt.Location = new Point(43, 94);
             nameTxt.Name = "nameTxt";
             nameTxt.Size = new Size(190, 27);
             nameTxt.TabIndex = 8;
@@ -86,7 +89,7 @@
             accessCmb.AllowDrop = true;
             accessCmb.FormattingEnabled = true;
             accessCmb.Items.AddRange(new object[] { "Manager- 1", "Staff- 2" });
-            accessCmb.Location = new Point(124, 258);
+            accessCmb.Location = new Point(43, 281);
             accessCmb.Name = "accessCmb";
             accessCmb.Size = new Size(151, 28);
             accessCmb.TabIndex = 9;
@@ -94,7 +97,7 @@
             // 
             // newEmailTxt
             // 
-            newEmailTxt.Location = new Point(371, 148);
+            newEmailTxt.Location = new Point(510, 94);
             newEmailTxt.Name = "newEmailTxt";
             newEmailTxt.Size = new Size(190, 27);
             newEmailTxt.TabIndex = 10;
@@ -102,7 +105,7 @@
             // 
             // searchBtn
             // 
-            searchBtn.Location = new Point(124, 321);
+            searchBtn.Location = new Point(65, 364);
             searchBtn.Name = "searchBtn";
             searchBtn.Size = new Size(98, 64);
             searchBtn.TabIndex = 11;
@@ -110,11 +113,29 @@
             searchBtn.UseVisualStyleBackColor = true;
             searchBtn.Click += searchBtn_Click;
             // 
+            // numberTxt
+            // 
+            numberTxt.Location = new Point(43, 194);
+            numberTxt.Name = "numberTxt";
+            numberTxt.Size = new Size(190, 27);
+            numberTxt.TabIndex = 13;
+            numberTxt.Text = "Phone Number";
+            // 
+            // addressTxt
+            // 
+            addressTxt.Location = new Point(43, 144);
+            addressTxt.Name = "addressTxt";
+            addressTxt.Size = new Size(190, 27);
+            addressTxt.TabIndex = 12;
+            addressTxt.Text = "Address";
+            // 
             // EditStaffFrm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(numberTxt);
+            Controls.Add(addressTxt);
             Controls.Add(searchBtn);
             Controls.Add(newEmailTxt);
             Controls.Add(accessCmb);
@@ -140,5 +161,7 @@
         private ComboBox accessCmb;
         private TextBox newEmailTxt;
         private Button searchBtn;
+        private TextBox numberTxt;
+        private TextBox addressTxt;
     }
 }

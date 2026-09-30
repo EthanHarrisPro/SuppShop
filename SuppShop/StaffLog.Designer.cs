@@ -32,6 +32,7 @@
             passwordTxt = new TextBox();
             enterBtn = new Button();
             backBtn = new Button();
+            onlineChk = new CheckBox();
             SuspendLayout();
             // 
             // userTxt
@@ -70,11 +71,22 @@
             backBtn.UseVisualStyleBackColor = true;
             backBtn.Click += backBtn_Click;
             // 
+            // onlineChk
+            // 
+            onlineChk.AutoSize = true;
+            onlineChk.Location = new Point(461, 49);
+            onlineChk.Name = "onlineChk";
+            onlineChk.Size = new Size(74, 24);
+            onlineChk.TabIndex = 4;
+            onlineChk.Text = "Online";
+            onlineChk.UseVisualStyleBackColor = true;
+            // 
             // StaffLog
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(onlineChk);
             Controls.Add(backBtn);
             Controls.Add(enterBtn);
             Controls.Add(passwordTxt);
@@ -92,5 +104,6 @@
         private TextBox passwordTxt;
         private Button enterBtn;
         private Button backBtn;
+        private CheckBox onlineChk;
     }
 }

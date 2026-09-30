@@ -1,4 +1,6 @@
 ﻿using SuppShop.Classes;
+using SuppShop.Data;
+using SuppShop.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -35,6 +37,23 @@ namespace SuppShop
             _StaffService.AddStaff(staff);
 
             staff.CreateUser();
+
+            using SuppShopContext context = new SuppShopContext();
+
+            StaffM staffM = new()
+            {
+                Email = emailTxt.Text,
+                Name = nameTxt.Text,
+                Address = addressTxt.Text,
+                Number = numberTxt.Text,
+                Password = passwordTxt.Text,
+                Level = accessCmb.SelectedIndex + 1
+            };
+
+            context.Add(staffM);
+
+            context.SaveChanges();
+
 
             this.Close();
             _StaffFrm.Show();
