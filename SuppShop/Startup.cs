@@ -1,4 +1,6 @@
 using SuppShop.Classes;
+using SuppShop.Data;
+using SuppShop.Models;
 
 namespace SuppShop
 {
@@ -29,7 +31,7 @@ namespace SuppShop
 
                     products.AddProduct(temp);
 
-                    
+
                 }
                 /*Testing
                 for (int i = 0; i < 2; i++)
@@ -40,6 +42,13 @@ namespace SuppShop
                 }
                 */
             }
+
+
+            /*Add to database*/
+
+
+
+
 
 
 
@@ -54,9 +63,66 @@ namespace SuppShop
             this.Hide();
         }
 
-        private void customerBtn_Click(object sender, EventArgs e)
+        private void dbSrchBtn_Click(object sender, EventArgs e)
         {
+            using SuppShopContext context = new SuppShopContext();
 
+            var products = context.Products
+                .Where(p => p.Price > 30.00M)
+                .OrderBy(p => p.Name);
+
+            foreach (ProductM p in products)
+            {
+                MessageBox.Show("ID: " + p.Id + "\n" + "Name: " + p.Name + "\n" + "Desc: "
+                    + p.Description + "\n" + "Price: " + p.Price + "\n" + "Stock: " + p.Stock);
+
+            }
+        }
+
+        private void dbAddBtn_Click(object sender, EventArgs e)
+        {
+            using SuppShopContext context = new SuppShopContext();
+
+            ProductM product = new ProductM()
+            {
+                Name = "Protein Powder",
+                Description = "Vanilla",
+                Price = 34.99M,
+                Stock = 5
+            };
+            context.Add(product);
+
+            context.SaveChanges();
+        }
+
+        private void dbUpBtn_Click(object sender, EventArgs e)
+        {
+            using SuppShopContext context = new SuppShopContext();
+
+            var strawberry = context.Products.Where(p => p.Name == "Protein Powder" && p.Description == "Strawberry")
+                .FirstOrDefault();
+
+            if (strawberry is ProductM)
+            {
+                strawberry.Price = 32.99M;
+            }
+
+            context.SaveChanges();
+        }
+
+        private void dbRemoveBtn_Click(object sender, EventArgs e)
+        {
+            using SuppShopContext context = new SuppShopContext();
+
+            var strawberry = context.Products.Where(p => p.Name == "Protein Powder" && p.Description == "Strawberry")
+                .FirstOrDefault();
+
+            if (strawberry is ProductM)
+            {
+                context.Remove(strawberry);
+            }
+
+            context.SaveChanges();
         }
     }
 }

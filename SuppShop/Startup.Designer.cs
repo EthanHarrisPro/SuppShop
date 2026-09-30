@@ -29,12 +29,15 @@
         private void InitializeComponent()
         {
             staffBtn = new Button();
-            dbBtn = new Button();
+            dbAddBtn = new Button();
+            dbSrchBtn = new Button();
+            dbUpBtn = new Button();
+            dbRemoveBtn = new Button();
             SuspendLayout();
             // 
             // staffBtn
             // 
-            staffBtn.Location = new Point(131, 192);
+            staffBtn.Location = new Point(12, 12);
             staffBtn.Name = "staffBtn";
             staffBtn.Size = new Size(121, 83);
             staffBtn.TabIndex = 0;
@@ -42,22 +45,55 @@
             staffBtn.UseVisualStyleBackColor = true;
             staffBtn.Click += staffBtn_Click;
             // 
-            // dbBtn
+            // dbAddBtn
             // 
-            dbBtn.Location = new Point(389, 192);
-            dbBtn.Name = "dbBtn";
-            dbBtn.Size = new Size(121, 83);
-            dbBtn.TabIndex = 1;
-            dbBtn.Text = "DB";
-            dbBtn.UseVisualStyleBackColor = true;
-            dbBtn.Click += customerBtn_Click;
+            dbAddBtn.Location = new Point(241, 169);
+            dbAddBtn.Name = "dbAddBtn";
+            dbAddBtn.Size = new Size(121, 83);
+            dbAddBtn.TabIndex = 1;
+            dbAddBtn.Text = "Add to DB";
+            dbAddBtn.UseVisualStyleBackColor = true;
+            dbAddBtn.Click += dbAddBtn_Click;
+            // 
+            // dbSrchBtn
+            // 
+            dbSrchBtn.Location = new Point(414, 169);
+            dbSrchBtn.Name = "dbSrchBtn";
+            dbSrchBtn.Size = new Size(121, 83);
+            dbSrchBtn.TabIndex = 2;
+            dbSrchBtn.Text = "Search DB";
+            dbSrchBtn.UseVisualStyleBackColor = true;
+            dbSrchBtn.Click += dbSrchBtn_Click;
+            // 
+            // dbUpBtn
+            // 
+            dbUpBtn.Location = new Point(251, 292);
+            dbUpBtn.Name = "dbUpBtn";
+            dbUpBtn.Size = new Size(121, 83);
+            dbUpBtn.TabIndex = 3;
+            dbUpBtn.Text = "Update DB";
+            dbUpBtn.UseVisualStyleBackColor = true;
+            dbUpBtn.Click += dbUpBtn_Click;
+            // 
+            // dbRemoveBtn
+            // 
+            dbRemoveBtn.Location = new Point(414, 292);
+            dbRemoveBtn.Name = "dbRemoveBtn";
+            dbRemoveBtn.Size = new Size(121, 83);
+            dbRemoveBtn.TabIndex = 4;
+            dbRemoveBtn.Text = "Remove from DB";
+            dbRemoveBtn.UseVisualStyleBackColor = true;
+            dbRemoveBtn.Click += dbRemoveBtn_Click;
             // 
             // startupFrm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(729, 501);
-            Controls.Add(dbBtn);
+            Controls.Add(dbRemoveBtn);
+            Controls.Add(dbUpBtn);
+            Controls.Add(dbSrchBtn);
+            Controls.Add(dbAddBtn);
             Controls.Add(staffBtn);
             Name = "startupFrm";
             Text = "Start";
@@ -71,6 +107,9 @@
 
 
         private Button staffBtn;
-        private Button dbBtn;
+        private Button dbAddBtn;
+        private Button dbSrchBtn;
+        private Button dbUpBtn;
+        private Button dbRemoveBtn;
     }
 }
