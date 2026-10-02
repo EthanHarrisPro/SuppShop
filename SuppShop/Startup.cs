@@ -15,6 +15,7 @@ namespace SuppShop
 
         private void staffFrm_Load(object sender, EventArgs e)
         {
+ 
             if (File.Exists("products.txt"))
             {
                 foreach (string line in File.ReadLines("products.txt"))

@@ -17,6 +17,10 @@ namespace SuppShop.Classes
         {
             staffList.Add(staff);
         }
+        public void RemoveStaff(Staff staff)
+        {
+            staffList.Remove(staff);
+        }
 
         public void UpdateStaff()
         {

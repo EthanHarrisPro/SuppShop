@@ -64,61 +64,88 @@ namespace SuppShop
 
         private void editBtn_Click(object sender, EventArgs e)
         {
+
+            bool unique = true;
             bool exists = false;
-            List<Staff> staff = _staffService.GetStaff();
-            foreach (Staff i in staff)
-            {
-                if (i.Email == emailTxt.Text && accessCmb.SelectedIndex != -1)
-                {
-                    int access = accessCmb.SelectedIndex + 1;
-                    string Access = access.ToString();
+            
 
-                    i.Name = nameTxt.Text;
-                    i.Email = newEmailTxt.Text;
-                    i.Password = passwordTxt.Text;
-                    i.AccessLevel = Access;
-                    exists = true;
+
+                List<Staff> staff = _staffService.GetStaff();
+
+                foreach (Staff j in staff)
+                {
+                    if (newEmailTxt.Text == j.Email)
+                    {
+                        unique = false;
+                    }
                 }
-            }
-            _staffService.UpdateStaff();
 
-            using SuppShopContext context = new SuppShopContext();
-
-            var staffM = context.Staff.Where(s => s.Email == emailTxt.Text)
-                .FirstOrDefault();
-
-            if (staffM is StaffM)
-            {
-                staffM.Name = nameTxt.Text;
-                staffM.Email = newEmailTxt.Text;
-                staffM.Password = passwordTxt.Text;
-                staffM.Level = accessCmb.SelectedIndex + 1;
-                staffM.Address = addressTxt.Text;
-                staffM.Number = numberTxt.Text;
-            }
-            else if (exists)
-            {
-                StaffM s = new()
+                if (!unique)
                 {
-                    Email = emailTxt.Text,
-                    Name = nameTxt.Text,
-                    Address = addressTxt.Text,
-                    Number = numberTxt.Text,
-                    Password = passwordTxt.Text,
-                    Level = accessCmb.SelectedIndex + 1
+                    MessageBox.Show("Email already in use");
+                }
+                else
+                {
 
-                };
+                    foreach (Staff i in staff)
+                    {
+                        if (i.Email == emailTxt.Text && accessCmb.SelectedIndex != -1)
+                        {
 
-                context.Add(s);
+                            int access = accessCmb.SelectedIndex + 1;
+                            string Access = access.ToString();
+
+                            i.Name = nameTxt.Text;
+                            i.Email = newEmailTxt.Text;
+                            i.Password = passwordTxt.Text;
+                            i.AccessLevel = Access;
+                            exists = true;
+
+                            _staffService.UpdateStaff();
+                        }
+                    }
+                
 
 
 
+                using SuppShopContext context = new SuppShopContext();
+
+                var staffM = context.Staff.Where(s => s.Email == emailTxt.Text)
+                    .FirstOrDefault();
+
+                if (staffM is StaffM)
+                {
+                    staffM.Name = nameTxt.Text;
+                    staffM.Email = newEmailTxt.Text;
+                    staffM.Password = passwordTxt.Text;
+                    staffM.Level = accessCmb.SelectedIndex + 1;
+                    staffM.Address = addressTxt.Text;
+                    staffM.Number = numberTxt.Text;
+                }
+                else if (exists)
+                {
+                    StaffM s = new()
+                    {
+                        Email = emailTxt.Text,
+                        Name = nameTxt.Text,
+                        Address = addressTxt.Text,
+                        Number = numberTxt.Text,
+                        Password = passwordTxt.Text,
+                        Level = accessCmb.SelectedIndex + 1
+
+                    };
+
+                    context.Add(s);
+
+
+
+                }
+                context.SaveChanges();
+
+
+                MessageBox.Show("Updated");
             }
-            context.SaveChanges();
-
-
-            MessageBox.Show("Updated");
-        }
+            }
 
         private void backBtn_Click(object sender, EventArgs e)
         {

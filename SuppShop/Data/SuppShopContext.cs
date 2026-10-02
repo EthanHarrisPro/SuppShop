@@ -19,7 +19,15 @@ namespace SuppShop.Data
 
         public DbSet<StaffM> Staff { get; set; } = null!;
 
-
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<StaffM>()
+                .HasIndex(s => s.Email)
+                .IsUnique();
+            modelBuilder.Entity<CustomerM>()
+                .HasIndex(c => c.Email)
+                .IsUnique();
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SuppShop;");

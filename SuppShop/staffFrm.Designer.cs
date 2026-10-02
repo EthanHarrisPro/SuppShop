@@ -34,6 +34,7 @@
             editProdBtn = new Button();
             sellBtn = new Button();
             editStaffBtn = new Button();
+            removeStaffBtn = new Button();
             SuspendLayout();
             // 
             // productBtn
@@ -96,11 +97,22 @@
             editStaffBtn.UseVisualStyleBackColor = true;
             editStaffBtn.Click += editStaffBtn_Click;
             // 
+            // removeStaffBtn
+            // 
+            removeStaffBtn.Location = new Point(142, 41);
+            removeStaffBtn.Name = "removeStaffBtn";
+            removeStaffBtn.Size = new Size(93, 73);
+            removeStaffBtn.TabIndex = 11;
+            removeStaffBtn.Text = "Remove Staff";
+            removeStaffBtn.UseVisualStyleBackColor = true;
+            removeStaffBtn.Click += removeStaffBtn_Click;
+            // 
             // staffFrm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(removeStaffBtn);
             Controls.Add(editStaffBtn);
             Controls.Add(sellBtn);
             Controls.Add(editProdBtn);
@@ -121,5 +133,6 @@
         private Button editProdBtn;
         private Button sellBtn;
         private Button editStaffBtn;
+        private Button removeStaffBtn;
     }
 }

@@ -71,5 +71,12 @@ namespace SuppShop
             editStaffFrm.Show();
             this.Hide();
         }
+
+        private void removeStaffBtn_Click(object sender, EventArgs e)
+        {
+            RemoveStaffFrm removeStaffFrm = new(_StaffService);
+            removeStaffFrm.Show();
+            this.Hide();
+        }
     }
 }

@@ -31,32 +31,46 @@ namespace SuppShop
 
         private void createBtn_Click(object sender, EventArgs e)
         {
-            int access = accessCmb.SelectedIndex + 1;
-            string Access = access.ToString();
-            Staff staff = new Staff(nameTxt.Text, emailTxt.Text, passwordTxt.Text, Access);
-            _StaffService.AddStaff(staff);
-
-            staff.CreateUser();
 
             using SuppShopContext context = new SuppShopContext();
+            StaffM staffM = new();
 
-            StaffM staffM = new()
+            var where = context.Staff.Where(s => s.Email == emailTxt.Text).FirstOrDefault();
+
+            if (where != null)
             {
-                Email = emailTxt.Text,
-                Name = nameTxt.Text,
-                Address = addressTxt.Text,
-                Number = numberTxt.Text,
-                Password = passwordTxt.Text,
-                Level = accessCmb.SelectedIndex + 1
-            };
+                MessageBox.Show("Email already in use");
+            }
 
-            context.Add(staffM);
+            else
+            {
+                int access = accessCmb.SelectedIndex + 1;
+                string Access = access.ToString();
+                Staff staff = new Staff(nameTxt.Text, emailTxt.Text, passwordTxt.Text, Access);
+                _StaffService.AddStaff(staff);
 
-            context.SaveChanges();
+                staff.CreateUser();
 
 
-            this.Close();
-            _StaffFrm.Show();
+
+                staffM = new()
+                {
+                    Email = emailTxt.Text,
+                    Name = nameTxt.Text,
+                    Address = addressTxt.Text,
+                    Number = numberTxt.Text,
+                    Password = passwordTxt.Text,
+                    Level = accessCmb.SelectedIndex + 1
+                };
+
+                context.Add(staffM);
+
+                context.SaveChanges();
+
+
+                this.Close();
+                _StaffFrm.Show();
+            }
 
         }
 
