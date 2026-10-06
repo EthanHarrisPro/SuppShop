@@ -53,14 +53,14 @@ namespace SuppShop
 
         private void editProdBtn_Click(object sender, EventArgs e)
         {
-            EditProdFrm editProdFrm = new(this, _products);
+            EditProdFrm editProdFrm = new(this, _products, Online);
             editProdFrm.Show();
             this.Hide();
         }
 
         private void sellBtn_Click(object sender, EventArgs e)
         {
-            SellFrm sellFrm = new(this, _products);
+            SellFrm sellFrm = new(this, _products, Online);
             sellFrm.Show();
             this.Hide();
         }

@@ -40,12 +40,12 @@
             stockLst.FormattingEnabled = true;
             stockLst.Location = new Point(45, 48);
             stockLst.Name = "stockLst";
-            stockLst.Size = new Size(183, 364);
+            stockLst.Size = new Size(266, 364);
             stockLst.TabIndex = 1;
             // 
             // addBtn
             // 
-            addBtn.Location = new Point(308, 97);
+            addBtn.Location = new Point(353, 72);
             addBtn.Name = "addBtn";
             addBtn.Size = new Size(88, 69);
             addBtn.TabIndex = 2;
@@ -58,12 +58,12 @@
             basketLst.FormattingEnabled = true;
             basketLst.Location = new Point(476, 48);
             basketLst.Name = "basketLst";
-            basketLst.Size = new Size(183, 364);
+            basketLst.Size = new Size(284, 364);
             basketLst.TabIndex = 3;
             // 
             // checkoutBtn
             // 
-            checkoutBtn.Location = new Point(308, 343);
+            checkoutBtn.Location = new Point(353, 319);
             checkoutBtn.Name = "checkoutBtn";
             checkoutBtn.Size = new Size(88, 69);
             checkoutBtn.TabIndex = 4;
@@ -74,7 +74,7 @@
             // totalLbl
             // 
             totalLbl.AutoSize = true;
-            totalLbl.Location = new Point(326, 287);
+            totalLbl.Location = new Point(371, 263);
             totalLbl.Name = "totalLbl";
             totalLbl.Size = new Size(42, 20);
             totalLbl.TabIndex = 5;
