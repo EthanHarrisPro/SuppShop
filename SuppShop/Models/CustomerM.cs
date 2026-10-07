@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace SuppShop.Models
@@ -20,6 +21,7 @@ namespace SuppShop.Models
 
         public string Password { get; set; } = null!;
 
+        [InverseProperty(nameof(OrderM.Customer))]
         public ICollection<OrderM> Order { get; set; } = null!;
     }
 }

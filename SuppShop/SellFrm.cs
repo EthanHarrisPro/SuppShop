@@ -17,6 +17,8 @@ namespace SuppShop
         staffFrm _staffFrm;
         Products _products;
 
+
+
         Basket basket = new();
 
         bool online;
@@ -30,6 +32,8 @@ namespace SuppShop
 
         private void SellFrm_Load(object sender, EventArgs e)
         {
+            
+
             if (online)
             {
                 using SuppShopContext context = new();
@@ -57,8 +61,6 @@ namespace SuppShop
 
         private void addBtn_Click(object sender, EventArgs e)
         {
-            if (!online)
-            {
                 string selected = stockLst.SelectedItems[0].ToString();
                 int index = stockLst.SelectedIndex;
                 string[] split = selected.Split(",");
@@ -125,30 +127,48 @@ namespace SuppShop
 
 
 
-            }
-            else
-            {
-                /* basket table 
-                 * basket id, total
-                 * 
-                 * basketdetaisltable
-                 * id, basketid, productid, quantity, price
-                 * 
-                 * ordertable
-                 * orderid, basketid, customerid = null
-                 * 
-                 * 
-                 * 
-                 * reciept
-                 * select product id, quanity, price join on basket id
-                 * 
-                 * select total on basketid
-                 */
-            }
+            
+
+
+            
         }
 
         private void checkoutBtn_Click(object sender, EventArgs e)
         {
+            using SuppShopContext context = new();
+
+            BasketM basketM = new();
+            context.Add(basketM);
+            context.SaveChanges();
+
+            foreach (Basket i in basket.GetBasket())
+            {
+
+                var product = context.Products.Where(p => p.Name == i.Name).FirstOrDefault();
+                if (product != null)
+                {
+                    if (i.Name == product.Name)
+                    {
+                        BasketDetailsM basketDetailsM = new()
+                        {
+                            BasketId = basketM.Id,
+                            ProductId = product.Id,
+                            Quantity = i.Count
+                        };
+
+                        product.Stock = product.Stock - i.Count;
+
+                        context.Add(basketDetailsM);
+                    }
+                }
+            }
+
+            context.SaveChanges();
+
+
+
+
+
             string total = basket.GetTotal().ToString();
             DialogResult result = MessageBox.Show("Basket Total = £" + total, "Enter details", MessageBoxButtons.OKCancel);
             if (result == DialogResult.OK)

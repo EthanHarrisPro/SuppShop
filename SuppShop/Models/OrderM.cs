@@ -10,11 +10,12 @@ namespace SuppShop.Models
         [Key]
         public int Id { get; set; }
 
-        public decimal Total { get; set; }
+        public int BasketId { get; set; }
 
-        public int ProductId { get; set; }
+        public int CustomerId { get; set; }
+
+        public BasketM Basket { get; set; } = null!;
 
         public CustomerM Customer { get; set; } = null!;
-        public ICollection<OrderDetailsM> orderDetails { get; set; } = null!;
     }
 }

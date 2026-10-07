@@ -11,13 +11,16 @@ namespace SuppShop.Data
     {
         public DbSet<CustomerM> Customers { get; set; } = null!;
 
-        public DbSet<OrderM> Orders { get; set; } = null!;
+        public DbSet<BasketM> Basket { get; set; } = null!;
 
         public DbSet<ProductM> Products { get; set; } = null!;
 
-        public DbSet<OrderDetailsM> OrderDetails { get; set; } = null!;
+        public DbSet<BasketDetailsM> BasketDetails { get; set; } = null!;
 
         public DbSet<StaffM> Staff { get; set; } = null!;
+
+        public DbSet<OrderM> Orders { get; set; } = null!;
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

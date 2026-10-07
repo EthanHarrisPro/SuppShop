@@ -22,7 +22,5 @@ namespace SuppShop.Models
 
 
 
-
-
     }
 }

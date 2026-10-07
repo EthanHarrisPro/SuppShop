@@ -21,6 +21,48 @@ namespace SuppShop.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("SuppShop.Models.BasketDetailsM", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int>("BasketId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("BasketId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("BasketDetails");
+                });
+
+            modelBuilder.Entity("SuppShop.Models.BasketM", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BasketDetailsId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Basket");
+                });
+
             modelBuilder.Entity("SuppShop.Models.CustomerM", b =>
                 {
                     b.Property<int>("Id")
@@ -57,32 +99,6 @@ namespace SuppShop.Migrations
                     b.ToTable("Customers");
                 });
 
-            modelBuilder.Entity("SuppShop.Models.OrderDetailsM", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
-
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("OrderId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("OrderDetails");
-                });
-
             modelBuilder.Entity("SuppShop.Models.OrderM", b =>
                 {
                     b.Property<int>("Id")
@@ -91,16 +107,15 @@ namespace SuppShop.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("BasketId")
+                        .HasColumnType("int");
+
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProductId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("Total")
-                        .HasColumnType("decimal(18,2)");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("BasketId");
 
                     b.HasIndex("CustomerId");
 
@@ -173,11 +188,11 @@ namespace SuppShop.Migrations
                     b.ToTable("Staff");
                 });
 
-            modelBuilder.Entity("SuppShop.Models.OrderDetailsM", b =>
+            modelBuilder.Entity("SuppShop.Models.BasketDetailsM", b =>
                 {
-                    b.HasOne("SuppShop.Models.OrderM", "Order")
-                        .WithMany("orderDetails")
-                        .HasForeignKey("OrderId")
+                    b.HasOne("SuppShop.Models.BasketM", "Basket")
+                        .WithMany("BasketDetails")
+                        .HasForeignKey("BasketId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -187,30 +202,38 @@ namespace SuppShop.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Order");
+                    b.Navigation("Basket");
 
                     b.Navigation("Product");
                 });
 
             modelBuilder.Entity("SuppShop.Models.OrderM", b =>
                 {
+                    b.HasOne("SuppShop.Models.BasketM", "Basket")
+                        .WithMany()
+                        .HasForeignKey("BasketId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("SuppShop.Models.CustomerM", "Customer")
                         .WithMany("Order")
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Basket");
+
                     b.Navigation("Customer");
+                });
+
+            modelBuilder.Entity("SuppShop.Models.BasketM", b =>
+                {
+                    b.Navigation("BasketDetails");
                 });
 
             modelBuilder.Entity("SuppShop.Models.CustomerM", b =>
                 {
                     b.Navigation("Order");
-                });
-
-            modelBuilder.Entity("SuppShop.Models.OrderM", b =>
-                {
-                    b.Navigation("orderDetails");
                 });
 #pragma warning restore 612, 618
         }
