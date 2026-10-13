@@ -144,7 +144,7 @@ namespace SuppShop
             foreach (Basket i in basket.GetBasket())
             {
 
-                var product = context.Products.Where(p => p.Name == i.Name).FirstOrDefault();
+                var product = context.Products.Where(p => p.Name == i.Name && p.Description == i.Desc).FirstOrDefault();
                 if (product != null)
                 {
                     if (i.Name == product.Name)
@@ -165,11 +165,32 @@ namespace SuppShop
 
             context.SaveChanges();
 
+            var reciept = (from prod in context.Products
+                          join bask in context.BasketDetails
+                          on prod.Id equals bask.ProductId
+                          where bask.BasketId == basketM.Id
+                          select new
+                          {
+                              prod.Name,
+                              prod.Description,
+                              prod.Price,
+                              bask.Quantity
 
 
-
+                          }).ToList();
 
             string total = basket.GetTotal().ToString();
+            File.Delete("receipt.txt");
+            foreach (var r in reciept)
+            {
+                decimal combined = r.Price * r.Quantity;
+                
+                File.AppendAllText("receipt.txt", $"{r.Name} | {r.Description} | {r.Price} x {r.Quantity} = {combined} \n");
+            }
+            File.AppendAllText("receipt.txt", $"\nTotal Price: {total}");
+
+
+
             DialogResult result = MessageBox.Show("Basket Total = £" + total, "Enter details", MessageBoxButtons.OKCancel);
             if (result == DialogResult.OK)
             {

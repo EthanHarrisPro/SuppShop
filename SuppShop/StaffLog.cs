@@ -98,5 +98,10 @@ namespace SuppShop
             _start.Show();
             this.Close();
         }
+
+        private void onlineChk_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

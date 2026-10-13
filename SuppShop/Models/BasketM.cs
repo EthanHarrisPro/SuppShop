@@ -12,7 +12,6 @@ namespace SuppShop.Models
         [Key]
         public int Id { get; set; }
 
-        public int BasketDetailsId { get; set; }
 
         [InverseProperty(nameof(BasketDetailsM.Basket))]
         public ICollection<BasketDetailsM> BasketDetails { get; set; } = null!;

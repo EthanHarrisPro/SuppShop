@@ -80,6 +80,7 @@
             onlineChk.TabIndex = 4;
             onlineChk.Text = "Online";
             onlineChk.UseVisualStyleBackColor = true;
+            onlineChk.CheckedChanged += onlineChk_CheckedChanged;
             // 
             // StaffLog
             // 

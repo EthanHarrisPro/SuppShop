@@ -55,9 +55,6 @@ namespace SuppShop.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("BasketDetailsId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.ToTable("Basket");

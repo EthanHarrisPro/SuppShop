@@ -33,6 +33,8 @@
             dbSrchBtn = new Button();
             dbUpBtn = new Button();
             dbRemoveBtn = new Button();
+            queryBtn = new Button();
+            onlineChk = new CheckBox();
             SuspendLayout();
             // 
             // staffBtn
@@ -85,11 +87,34 @@
             dbRemoveBtn.UseVisualStyleBackColor = true;
             dbRemoveBtn.Click += dbRemoveBtn_Click;
             // 
+            // queryBtn
+            // 
+            queryBtn.Location = new Point(331, 53);
+            queryBtn.Name = "queryBtn";
+            queryBtn.Size = new Size(121, 83);
+            queryBtn.TabIndex = 5;
+            queryBtn.Text = "Query";
+            queryBtn.UseVisualStyleBackColor = true;
+            queryBtn.Click += queryBtn_Click;
+            // 
+            // onlineChk
+            // 
+            onlineChk.AutoSize = true;
+            onlineChk.Location = new Point(583, 53);
+            onlineChk.Name = "onlineChk";
+            onlineChk.Size = new Size(74, 24);
+            onlineChk.TabIndex = 6;
+            onlineChk.Text = "Online";
+            onlineChk.UseVisualStyleBackColor = true;
+            onlineChk.CheckedChanged += onlineChk_CheckedChanged;
+            // 
             // startupFrm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(729, 501);
+            Controls.Add(onlineChk);
+            Controls.Add(queryBtn);
             Controls.Add(dbRemoveBtn);
             Controls.Add(dbUpBtn);
             Controls.Add(dbSrchBtn);
@@ -99,6 +124,7 @@
             Text = "Start";
             Load += staffFrm_Load;
             ResumeLayout(false);
+            PerformLayout();
         }
 
 
@@ -111,5 +137,7 @@
         private Button dbSrchBtn;
         private Button dbUpBtn;
         private Button dbRemoveBtn;
+        private Button queryBtn;
+        private CheckBox onlineChk;
     }
 }

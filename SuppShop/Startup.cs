@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using SuppShop.Classes;
 using SuppShop.Data;
 using SuppShop.Models;
@@ -8,6 +9,8 @@ namespace SuppShop
     {
         Products products = new();
 
+        bool online;
+
         public startupFrm()
         {
             InitializeComponent();
@@ -15,43 +18,19 @@ namespace SuppShop
 
         private void staffFrm_Load(object sender, EventArgs e)
         {
- 
-            if (File.Exists("products.txt"))
-            {
-                foreach (string line in File.ReadLines("products.txt"))
-                {
-                    string[] parts = line.Split(",");
-
-                    string name = parts[0];
-                    string desc = parts[1];
-                    string count = parts[2];
-                    string cost = parts[3];
-
-                    Products temp = new();
-                    temp.createProduct(name, desc, int.Parse(count), decimal.Parse(cost));
-
-                    products.AddProduct(temp);
-
-
-                }
-                /*Testing
-                for (int i = 0; i < 2; i++)
-                {
-                    List<Products> product = products.GetProduct();
-                    string count = product[i].Count.ToString();
-                    MessageBox.Show(product[i].Name + product[i].Desc + product[i].Count);
-                }
-                */
-            }
+            ReadProduct();
+            
+            /*Testing
+              for (int i = 0; i < 2; i++)
+              {
+                  List<Products> product = products.GetProduct();
+                  string count = product[i].Count.ToString();
+                  MessageBox.Show(product[i].Name + product[i].Desc + product[i].Count);
+              }
+              */
 
 
             /*Add to database*/
-
-
-
-
-
-
 
 
 
@@ -81,7 +60,7 @@ namespace SuppShop
 
             var staff = context.Staff;
 
-            foreach(StaffM s in staff)
+            foreach (StaffM s in staff)
             {
                 MessageBox.Show(s.Name);
             }
@@ -132,5 +111,74 @@ namespace SuppShop
 
             context.SaveChanges();
         }
+
+        private void queryBtn_Click(object sender, EventArgs e)
+        {
+            using SuppShopContext context = new();
+            var q = context.Products.Join(context.BasketDetails,
+                p => p.Id, bd => bd.ProductId, (p, bd) => new
+                {
+                    ProductName = p.Name,
+                    Quanity = bd.Quantity
+                }).ToList();
+
+            foreach (var item in q)
+            {
+                MessageBox.Show(item.ProductName);
+            }
+
+
+
+        }
+
+        private void onlineChk_CheckedChanged(object sender, EventArgs e)
+        {
+            online = onlineChk.Checked;
+
+            ReadProduct();
+        }
+
+        public void ReadProduct()
+        {
+            products = new();
+            if (!online)
+            {
+                if (File.Exists("products.txt"))
+                {
+                    foreach (string line in File.ReadLines("products.txt"))
+                    {
+                        string[] parts = line.Split(",");
+
+                        string name = parts[0];
+                        string desc = parts[1];
+                        string count = parts[2];
+                        string cost = parts[3];
+
+                        Products temp = new();
+                        temp.createProduct(name, desc, int.Parse(count), decimal.Parse(cost));
+
+                        products.AddProduct(temp);
+
+
+                    }
+                }
+              
+            }
+            else
+            {
+                using SuppShopContext context = new();
+
+                var Prod = context.Products;
+
+                foreach (var P in Prod)
+                {
+                    Products temp = new();
+                    temp.createProduct(P.Name, P.Description, P.Stock, P.Price);
+                    products.AddProduct(temp);
+                }
+            }
+        }
+
     }
+
 }
