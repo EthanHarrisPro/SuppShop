@@ -1,0 +1,32 @@
+[
+  {
+    "Name": "ALL",
+    "Projects": [
+      {
+        "Path": "SuppShop\\SuppShop.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "..\\SuppAPI\\SuppAPI\\SuppAPI.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "..\\SuppShopBlazor\\SuppShopBlazor.csproj",
+        "Action": "Start"
+      }
+    ]
+  },
+  {
+    "Name": "WEB",
+    "Projects": [
+      {
+        "Path": "..\\SuppAPI\\SuppAPI\\SuppAPI.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "..\\SuppShopBlazor\\SuppShopBlazor.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
