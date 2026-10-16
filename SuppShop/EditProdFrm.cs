@@ -33,8 +33,8 @@ namespace SuppShop
 
         private void searchBtn_Click(object sender, EventArgs e)
         {
-            if (online)
-            {
+            //if (online)
+            //{
                 using SuppShopContext context = new SuppShopContext();
 
                 var search = context.Products.Where(p=> p.Name == nameTxt.Text && p.Description == descTxt.Text)
@@ -45,7 +45,7 @@ namespace SuppShop
                     costTxt.Text = search.Price.ToString();
                     countTxt.Text = search.Stock.ToString();
                 }
-            }
+            /*}
             else
             {
                 foreach (Products p in _products.GetProduct())
@@ -56,7 +56,7 @@ namespace SuppShop
                         countTxt.Text = p.Count.ToString();
                     }
                 }
-            }
+            }*/
         }
 
         private void enterBtn_Click(object sender, EventArgs e)
@@ -84,7 +84,7 @@ namespace SuppShop
             }
 
             
-            foreach (Products p in _products.GetProduct())
+            /*foreach (Products p in _products.GetProduct())
             {
                 if (p.Name == nameTxt.Text && p.Desc == descTxt.Text)
                 {
@@ -98,7 +98,7 @@ namespace SuppShop
                     
                 }
 
-            }
+            }*/
 
             _staffFrm.Show();
             this.Close();

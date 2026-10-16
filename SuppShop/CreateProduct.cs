@@ -52,6 +52,9 @@ namespace SuppShop
             context.Add(product);
 
             context.SaveChanges();
+
+            this.Close();
+            _staffFrm.Show();
         }
     }
 }

@@ -1,3 +1,5 @@
 <Solution>
+  <Project Path="../SuppAPI/SuppAPI/SuppAPI.csproj" />
+  <Project Path="../SuppShopBlazor/SuppShopBlazor.csproj" Id="2a9cab51-697c-44ec-a2f6-05e3028b8f6b" />
   <Project Path="SuppShop/SuppShop.csproj" />
 </Solution>

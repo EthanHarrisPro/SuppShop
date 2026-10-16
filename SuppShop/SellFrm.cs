@@ -34,8 +34,8 @@ namespace SuppShop
         {
             
 
-            if (online)
-            {
+            //if (online)
+            //{
                 using SuppShopContext context = new();
 
                 var products = context.Products;
@@ -44,14 +44,14 @@ namespace SuppShop
                 {
                     stockLst.Items.Add(product.Name + "," + product.Description + "," + product.Stock + "," + product.Price);
                 }
-            }
-            else
+            //}
+            /*else
             {
                 foreach (Products products in _products.GetProduct())
                 {
                     stockLst.Items.Add(products.Name + "," + products.Desc + "," + products.Count + "," + products.Cost);
                 }
-            }
+            }*/
         }
 
         private void stockGrp_Enter(object sender, EventArgs e)
